@@ -1,8 +1,7 @@
-# Cucumber-Java Skeleton
+# Cucumber-Java ShopNonstop
 
-This is the simplest possible build script setup for Cucumber using Java.
-There is nothing fancy like a webapp or browser testing. All this does is to show you how
-to install and run Cucumber!
+This code base uses https://github.com/cucumber/cucumber-java-skeleton.git to set up the features, and includes a framework for a little web shop. 
+
 
 There is a single feature file with one scenario. The scenario has three steps, two of them pending. See if you can make them all pass!
 
@@ -10,15 +9,15 @@ There is a single feature file with one scenario. The scenario has three steps, 
 
 Git:
 
-    git clone https://github.com/cucumber/cucumber-java-skeleton.git
-    cd cucumber-java-skeleton
+    git clone https://github.com/cucumber/cucumber-java-shop-nonstop.git
+    cd cucumber-java-shop-nonstop
 
 Subversion:
 
-    svn checkout https://github.com/cucumber/cucumber-java-skeleton/trunk cucumber-java-skeleton
-    cd cucumber-java-skeleton
+    svn checkout https://github.com/cucumber/cucumber-java-shop-nonstop/trunk cucumber-java-shop-nonstop
+    cd cucumber-java-shop-nonstop
 
-Or simply [download a zip](https://github.com/cucumber/cucumber-java-skeleton/archive/master.zip) file.
+Or simply [download a zip](https://github.com/cucumber/cucumber-java-shop-nonstop/archive/master.zip) file.
 
 ## Use Maven
 
