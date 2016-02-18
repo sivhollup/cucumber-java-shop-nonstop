@@ -7,10 +7,11 @@ import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertEquals;
 
-public class HelloStepDefs {
+public class HelloStepDefs extends AbstractDefs {
 
     private RestTemplate helloShop;
     private String result;
+
 
     @Given("^I want to shop$")
     public void iWantToShop() throws Throwable {
