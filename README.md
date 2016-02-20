@@ -1,42 +1,89 @@
 # Cucumber-Java ShopNonstop
 
-This code base uses https://github.com/cucumber/cucumber-java-skeleton.git to set up the features, and includes a framework for a little web shop. 
+The goal of this workshop is to implement Shop Nonstop web shop
+where delicious chocolates are sold. The web shop does not have a user
+interface, so we'll only work directly on the backend using REST services. The
+project is set up with Maven 3 and Java 8, you'll need to install these tools
+before you can get started. An IDE is nice to have too, IntelliJ or Eclipse are
+good choices. 
 
+We'll drive the development with Cucumber scenarios. For now there is a single
+feature file with one scenario. The scenario has three steps, two of them
+pending. See if you can make them all pass!
 
-There is a single feature file with one scenario. The scenario has three steps, two of them pending. See if you can make them all pass!
+Use a test driven approach: write a scenario and implement the step definitions
+before writing the domain code that makes the scenarios pass. Remember that
+Cucumber has two "stages" it can complain about: you have to have the step
+definitions and then make the test pass. The output from cucumber will help you
+generate the stub code for the step definitions if your IDE doesn't do it for
+you. 
+
+The cucumber setup is forked from https://github.com/cucumber/cucumber-java-skeleton.git
 
 ## Get the code
 
-Git:
+If you have or create a github account you can clone the workshop using git
+with:
 
     git clone https://github.com/cucumber/cucumber-java-shop-nonstop.git
     cd cucumber-java-shop-nonstop
 
-Subversion:
+Or use Subversion if that's your preferred version control setup:
 
     svn checkout https://github.com/cucumber/cucumber-java-shop-nonstop/trunk cucumber-java-shop-nonstop
     cd cucumber-java-shop-nonstop
 
-Or simply [download a zip](https://github.com/cucumber/cucumber-java-shop-nonstop/archive/master.zip) file.
+Or simply [download a
+zip](https://github.com/cucumber/cucumber-java-shop-nonstop/archive/master.zip)
+file if you don't have or don't want to get a github account. 
 
-## Use Maven
 
-Open a command window and run:
+## Build the project
 
-    mvn test
+Open a command window, go to the main project directory (where the pom.xml is) and run:
 
-This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the `RunCukesTest`
+    mvn clean install
+
+This compiles the code, runs Cucumber features using Cucumber's JUnit runner and
+builds the executable jar file. The `@RunWith(Cucumber.class)` annotation on the `RunCukesTest`
 class tells JUnit to kick off Cucumber.
 
-## Use Ant
+## The project setup
 
-Open a command window and run:
+The web shop itself is hosted on a little web server and exposes itself to the
+world with REST services. This project uses [Spring Boot]
+(http://projects.spring.io/spring-boot/) to set up the web server, so the main
+class is annotated with `@SpringBootApplication` and basically uses Spring Boot
+to setup a server. 
 
-    ant download
-    ant runcukes
+The appliation can be started from your IDE by running `Main.java` (in
+src/main/java/com/shop/nonstop/) or by running the jar file you get in the
+target directory after you've run `maven clean install`. Run the jar file with 
 
-This runs Cucumber features using Cucumber's Command Line Interface (CLI) runner. Note that the `RunCukesTest` junit class is not used at all.
-If you remove it (and the `cucumber-junit` jar dependency), it will run just the same.
+    java -jar cucumber-java-shop-nonstop-0.0.1.jar  
+ 
+This gives you a web server running on localhost which listens to port 8080. You can check that
+it's running by opening a browser tab at
+
+    http://localhost:8080/hello
+
+You should get "Hello!" as a reply from the rest service.
+
+
+#Cucumber details
+
+## Cucumber test setup
+
+The feature files, where all scenarios are collected, can be found in
+src/test/resources and follows the package convention of the domain code
+(src/main/java). 
+
+The step definitions (glue code) can be found in src/test/java, also following
+the package convention of the domain code. The main test runner class,
+RunCukesTest.java, has annotations both for Cucumber
+and Spring Boot, so that maven knows how to run the tests and will run the tests
+with the web server (use maven test or maven clean install). 
+
 
 ## Overriding options
 
@@ -49,10 +96,6 @@ Sometimes it can be useful to override these options without changing or recompi
 Using Maven:
 
     mvn -Dcucumber.options="..." test
-
-Using Ant:
-
-    JAVA_OPTIONS='-Dcucumber.options="..."' ant runcukes
 
 Let's look at some things you can do with `cucumber.options`. Try this:
 
