@@ -18,14 +18,9 @@ public class HelloStepDefs extends AbstractDefs {
         helloShop = new RestTemplate();
     }
 
-    @When("^I say hello$")
-    public void iSayHello() throws Throwable {
+    @When("^(.+) say hello$")
+    public void sayHello(String name) throws Throwable {
         result = helloShop.getForObject("http://localhost:8080/hello", String.class);
     }
 
-    @Then("^the shop should say hello back$")
-    public void theShopShouldSayHelloBack() throws Throwable {
-        assertEquals("Hello!", result);
-
-    }
 }

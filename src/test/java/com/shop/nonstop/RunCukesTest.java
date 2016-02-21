@@ -12,9 +12,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(Cucumber.class)
 @SpringApplicationConfiguration(Main.class)
 public class RunCukesTest {
-    @Test
-    public void testName() throws Exception {
 
-
-    }
 }
